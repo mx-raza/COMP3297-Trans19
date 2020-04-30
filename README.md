@@ -4,6 +4,8 @@
 - Simply hit run to start the server
 - The server will autoreload as needed. You don't need to restart the server manually.
 
+[![Run on Repl.it](https://repl.it/badge/github/ubaidraf/COMP3297-Trans19)](https://repl.it/github/ubaidraf/COMP3297-Trans19)
+
 ## Add your first view
 
 1. Create a file under `mysite` named `views.py` with the following contents:
