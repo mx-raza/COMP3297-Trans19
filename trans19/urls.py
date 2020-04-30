@@ -1,18 +1,17 @@
 from django.urls import path
-
 from . import views
+
+app_name = 'trans19'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('patient/create/', views.PatientCreate.as_view(), name='createPatient'),
-    path('travel/create/', views.TravelHistoryCreate.as_view(), name='createTravelHistory'),
-    path('patients/', views.PatientListView.as_view(), name='patients'),
-    path('travels/', views.TravelListView.as_view(), name='travels'),
-    path('patient/<int:pk>',
-         views.PatientDetailView.as_view(), name='patient-detail'),
-    path('travel/<int:pk>',
-         views.TravelHistoryDetailView.as_view(), name='travelhistory-detail'),
-    
-    # new path add by Nicholas on 28th April
-    path('travel/delete/<int:pk>', views.TravelHistoryDelete.as_view(), name='deleteTravelHistory'),
+    path('locations/', views.locations, name='locations'),
+    path('patients/', views.patients, name='patients'),
+    path('patients/<int:patient_id>/', views.detail, name='detail'),
+    path('patients/new/', views.PatientCreate.as_view(), name='patient_new'),
+    path('patients/<int:pk>/edit', views.PatientUpdate.as_view(), name='patient_edit'),
+    path('patients/<int:pk>/delete', views.PatientDelete.as_view(), name='patient_delete'),
+    path('locations/new', views.location_new, name='location_new'),
+    path('locations/<int:pk>/edit', views.location_edit, name='location_edit'),
+    path('locations/<int:pk>/delete', views.LocationDelete.as_view(), name='location_delete'),
 ]

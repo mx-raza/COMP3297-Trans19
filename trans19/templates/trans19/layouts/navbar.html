@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'trans19:index' %}">Trans-19</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {{ patient }}">
+          <a class="nav-link" href="{% url 'trans19:patients' %}">Patients</a>
+        </li>
+        <li class="nav-item {{ location }}">
+          <a class="nav-link" href="{% url 'trans19:locations' %}">Locations</a>
+        </li>
+          <li class="nav-item {{ new }}">
+            <a class="nav-link" href="{% url 'trans19:patient_new' %}">Add Patient</a>
+        </li>
+          <li class="nav-item {{ new }}">
+            <a class="nav-link" href="{% url 'trans19:location_new' %}">Add Location</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

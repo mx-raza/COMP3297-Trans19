@@ -1,0 +1,23 @@
+{% extends "trans19/layouts/base.html" %}
+{% block content %}
+    <h2 class="text-center mt-5">Case {{ patient.case_number }}: {{ patient.patient_name }}</h2>
+    <h4 class="text-center">Visit Record</h4>
+    <table>
+        <tr>
+            <th class="header">Location Visited</th>
+            <th class="header">Date from</th>
+            <th class="header">Date to</th>
+            <th class="header">Detail</th>
+            <th class="header">Category</th>
+        </tr>
+        {% for visit in patient.visit_set.all %}
+        <tr>
+            <th>{{ visit }}</th>
+            <th>{{ visit.date_from }}</th>
+            <th>{{ visit.date_to }}</th>
+            <th>{{ visit.detail }}</th>
+            <th>{{ visit.category }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

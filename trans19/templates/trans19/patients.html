@@ -1,0 +1,33 @@
+{% extends "trans19/layouts/base.html" %}
+{% block content %}
+    <h2 class="text-center mt-5">Patient Record</h2>
+    {%  if latest_patient_list %}
+    <table>
+            <tr>
+                <th class="header">Patient Name</th>
+                <th class="header">ID number</th>
+                <th class="header">Date of birth</th>
+                <th class="header">Date case confirmed</th>
+                <th class="header">Case number</th>
+                <th class="header">Location(s) Visited</th>
+                <th class="header">Modify</th>
+            </tr>
+            {% for patient in latest_patient_list %}
+            <tr>
+                <td>{{ patient.patient_name }}</td>
+                <td>{{ patient.patient_id }}</td>
+                <td>{{ patient.date_of_birtd }}</td>
+                <td>{{ patient.date_case_confirmed }}</td>
+                <td>{{ patient.case_number }}</td>
+                <td><a href="{% url 'trans19:detail' patient.case_number %}">Visit Record</a></td>
+                <td>
+                    <a href="{% url 'trans19:patient_edit' pk=patient.pk %}">Edit</a>
+                    <a href="{% url 'trans19:patient_delete' pk=patient.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    {%  else %}
+        <p>No patients are available.</p>
+    {%  endif %}
+{% endblock %}
