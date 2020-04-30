@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Travel History List</h1>
+
+{% if travelhistory_list %}
+  <ul>
+
+  {% for travelhistory in travelhistory_list %}
+  
+    <li>
+      <a href="{{ travelhistory.get_absolute_url }}">
+      {{ travelhistory.Location_Visited }} {{travelhistory.Address}} at {{travelhistory.DateFrom}} - {{travelhistory.DateTo}}
+      </a>
+    </li>
+  {% endfor %}
+
+ </ul>
+{% else %}
+  <p>There are no travelhistorys available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}
+

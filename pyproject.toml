@@ -1,0 +1,16 @@
+[build-system]
+build-backend = "poetry.masonry.api"
+requires = ["poetry>=0.12"]
+
+[tool]
+[tool.poetry]
+authors = ["Ubaid Rafique <ubaid.raf@outlook.com>", "Vanessa Leung <vleungz.98@gmail.com>"]
+description = ""
+name = "trans19"
+version = "0.2.0"
+[tool.poetry.dependencies]
+django = "^3.0"
+django-crispy-forms = "^1.9"
+python = "^3.7"
+django-dynamic-formsets = "^0.0.8"
+[tool.poetry.dev-dependencies]

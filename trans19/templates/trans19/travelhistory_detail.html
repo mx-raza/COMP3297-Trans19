@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Location: {{ travelhistory.Location_Visited }} </h1>
+<p><strong>Patient:</strong> {{ travelhistory.Address }}</p>
+<p><strong>Address:</strong> {{ travelhistory.Address }}</p>
+<p><strong>District:</strong> {{ travelhistory.District }}</p> 
+<p><strong>X Coord:</strong> {{ travelhistory.XCoord }}</p>   
+<p><strong>Y Coord:</strong> {{ travelhistory.YCoord }}</p>  
+<p><strong>Date From:</strong> {{ travelhistory.DateFrom }}</p>
+<p><strong>Date To:</strong> {{ travelhistory.DateTo }}</p>
+<p><strong>Detail:</strong> {{ travelhistory.Detail }}</p>
+<p><strong>Category:</strong> {{ travelhistory.get_Category_display }}</p>
+
+<!-- add a link to delete this location by Nicholas on 28th April -->
+<a href="{% url 'deleteTravelHistory' travelhistory.pk %}">Delete this location</a>
+
+
+</div>
+{% endblock %}
