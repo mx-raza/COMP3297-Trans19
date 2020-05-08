@@ -21,6 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("trans19.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path("trans19/", include("trans19.urls")),
-    # path("", RedirectView.as_view(url="/trans19/", permanent=False)),
 ]

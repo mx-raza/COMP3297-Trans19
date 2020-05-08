@@ -1,0 +1,138 @@
+{% extends "trans19/layouts/base.html" %}
+{% block title %}
+Search Connections
+{% endblock %}
+{% block content %}
+<div class="container-fluid my-5">
+  <div class="card">
+    <div class="card-header">
+      Search Connections
+    </div>
+    <div class="card-body">
+      <form method="GET">
+        {% csrf_token %}
+        <p>
+          <label for="id_patient_case">Patient Case Number:</label>
+          <input
+            type="number"
+            name="case_number"
+            class="numberinput"
+            required=""
+            value="0"
+            min="0"
+            id="id_patient_case"
+          />
+        </p>
+
+        <p>
+          <label for="id_time_window">Time WIndow:</label>
+          <input
+            type="number"
+            name="time_window"
+            class="numberinput"
+            required=""
+            value="0"
+            min="0"
+            id="id_time_window"
+          />
+        </p>
+
+        <button type="submit" class="save btn btn-primary">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% if selected_patient %}
+<h1 class="text-center mt-5">Search Results</h1>
+
+<h3 class="text-center mt-5">Selected Patient</h3>
+<table>
+  <tr>
+    <th class="header">Case number</th>
+    <th class="header">Patient Name</th>
+    <th class="header">Date case confirmed</th>
+  </tr>
+  <tr>
+    {% for patient in selected_patient %}
+    <td>{{ patient.case_number }}</td>
+    <td>{{ patient.patient_name }}</td>
+    <td>{{ patient.date_case_confirmed }}</td>
+    {% endfor %}
+  </tr>
+</table>
+
+<h3 class="text-center mt-5">Selected Patient's Visits</h3>
+<table>
+  <tr>
+    <th class="header">Location Visited</th>
+    <th class="header">Address</th>
+    <th class="header">District</th>
+    <th class="header">X Coord</th>
+    <th class="header">Y Coord</th>
+    <th class="header">Date From</th>
+    <th class="header">Date To</th>
+    <th class="header">Detail</th>
+    <th class="header">Category</th>
+  </tr>
+
+  {% for visit in selected_patient_visit %}
+  <tr>
+    <td>
+      {{ visit.location.location_name }}
+    </td>
+    <td>
+      {{ visit.location.address }}
+    </td>
+    <td>
+      {{ visit.location.district }}
+    </td>
+    <td>
+      {{ visit.location.x_coord }}
+    </td>
+    <td>
+      {{ visit.location.y_coord }}
+    </td>
+    <td>
+      {{ visit.date_from }}
+    </td>
+    <td>
+      {{ visit.date_to }}
+    </td>
+    <td>
+      {{ visit.details }}
+    </td>
+    <td>
+      {{ visit.category }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h3 class="text-center mt-5">Possible Connections to the Selected Patient</h3>
+<table>
+  <tr>
+    <th class="header">Case Number</th>
+    <th class="header">Patient Name</th>
+    <th class="header">Date case confirmed</th>
+    <th class="header">Location</th>
+    <th class="header">Date From</th>
+    <th class="header">Date To</th>
+    <th class="header">Detail</th>
+    <th class="header">Category</th>
+  </tr>
+  {% for visit in potential_patient_list %}
+  <tr>
+    <td>{{ visit.patient.case_number }}</td>
+    <td>{{ visit.patient.patient_name }}</td>
+    <td>{{ visit.patient.date_case_confirmed }}</td>
+    <td>{{ visit.location.location_name }}</td>
+    <td>{{ visit.date_from }}</td>
+    <td>{{ visit.date_to }}</td>
+    <td>{{ visit.details }}</td>
+    <td>{{ visit.category }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+<br />
+{% endblock %}

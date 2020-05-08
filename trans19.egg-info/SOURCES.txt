@@ -24,6 +24,8 @@ trans19/migrations/0007_remove_travelhistory_patient.py
 trans19/migrations/0008_patient_location.py
 trans19/migrations/0009_location.py
 trans19/migrations/0010_auto_20200430_1512.py
+trans19/migrations/0011_auto_20200430_1728.py
+trans19/migrations/0012_auto_20200505_0456.py
 trans19/migrations/__init__.py
 trans19/static/__init__.py
 trans19/static/trans19/__init__.py
@@ -44,5 +46,9 @@ trans19/templates/trans19/formset.html
 trans19/templates/trans19/index.html
 trans19/templates/trans19/locations.html
 trans19/templates/trans19/patients.html
+trans19/templates/trans19/searchConnections.html
 trans19/templates/trans19/layouts/base.html
 trans19/templates/trans19/layouts/navbar.html
+trans19/templates/trans19/svgs/loginSvg.html
+trans19/templates/trans19/svgs/passwordSvg.html
+trans19/templates/trans19/svgs/usernameSvg.html

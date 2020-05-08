@@ -1,7 +1,22 @@
-{% extends "login_generic.html" %}
+{% extends "trans19/layouts/base.html" %}
+{% block title %}
+Logged Out
+{% endblock %}
 
 {% block content %}
-<p>Logged out!</p>  
 
-<a href="{% url 'login'%}">Click here to login again.</a>
+<div class="container-fluid my-5">
+    <div class="card">
+        <div class="card-header">
+            Logged out
+        </div>
+        <div class="card-body">
+          <button class="nav_login_btn">
+            <a class="nav-link" href="{% url 'login' %}" style="color: rgb(255, 255, 255);">
+              {% include 'trans19/svgs/loginSvg.html' %} Login again
+            </a>
+          </button>
+        </div>
+    </div>
+</div>
 {% endblock %}

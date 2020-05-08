@@ -1,7 +1,11 @@
 {% extends "trans19/layouts/base.html" %}
+{% block title %}
+Index
+{% endblock %}
 {% block content %}
     <div class="container mt-5">
         <h1 class="display-4">Trans-19</h1>
         <p class="lead pt-2 pl-2">A web application to keep track of the database of Covid-19 Patients at CHP</p>
+        <strong>Number of cases: {{ num_cases }}</strong>
     </div>
 {% endblock %}

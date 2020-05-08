@@ -1,22 +1,38 @@
+{% load static %}
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'trans19:index' %}">Trans-19</a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+	<a class="navbar-brand" href="{% url 'trans19:index' %}">Trans-19</a>
+	<button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navLinks">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item {{ patient }}">
+        <li class="nav-item {{ patient_tab }}">
           <a class="nav-link" href="{% url 'trans19:patients' %}">Patients</a>
         </li>
-        <li class="nav-item {{ location }}">
+        <li class="nav-item {{ location_tab }}">
           <a class="nav-link" href="{% url 'trans19:locations' %}">Locations</a>
         </li>
-          <li class="nav-item {{ new }}">
-            <a class="nav-link" href="{% url 'trans19:patient_new' %}">Add Patient</a>
+        <li class="nav-item {{ new_patient_tab }}">
+          <a class="nav-link" href="{% url 'trans19:patient_new' %}">Add Patient</a>
         </li>
-          <li class="nav-item {{ new }}">
-            <a class="nav-link" href="{% url 'trans19:location_new' %}">Add Location</a>
+        <li class="nav-item {{ new_location_tab }}">
+          <a class="nav-link" href="{% url 'trans19:location_new' %}">Add Location</a>
+        </li>
+        <li class="nav-item {{ connection_tab }}">
+          <a class="nav-link" href="{% url 'trans19:search_connections' %}">Search Connections</a>
         </li>
       </ul>
+      
+      {% if user.is_authenticated %}
+        <button class="nav-item login_btn" onclick="location.href ='{% url 'logout'%}'" title="Logout">
+          {% include "trans19/svgs/usernameSvg.html" %} {% if user.get_name %} {{ user.get_name }} {% else %} {{user.get_username}} {% endif %}
+        </button>
+      {% else %}
+        <button class="nav-item nav_login_btn" style="float: right;">
+          <a class="nav-link" href="{% url 'login' %}" style="color: rgb(255, 255, 255);">
+            {% include 'trans19/svgs/loginSvg.html' %} Login
+          </a>
+        </button>
+      {% endif %} 
     </div>
   </nav>

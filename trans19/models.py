@@ -3,17 +3,36 @@ from django.urls import reverse
 from datetime import date
 
 class Patient(models.Model):
-  patient_name = models.CharField("Name", max_length=200, help_text="Name of the Patient")
-  patient_id = models.CharField("Patient Identity Document Number", max_length=10, help_text="Identity Document Number", null=True, blank=True)
-  date_of_birth = models.DateField("Date of Birth", null=True, blank=True)
-  date_case_confirmed = models.DateField("Date Case Confirmed", null=False, blank=False, default=date.today)
+  patient_name = models.CharField(
+    "Name", 
+    max_length=200, 
+    # help_text="Name of the Patient"
+  )
+  patient_id = models.CharField(
+    "Patient Identity Document Number", 
+    max_length=10, 
+    # help_text="Identity Document Number", 
+    null=True, 
+    blank=True
+  )
+  date_of_birth = models.DateField(
+    "Date of Birth", 
+    null=True, 
+    blank=True
+  )
+  date_case_confirmed = models.DateField(
+    "Date Case Confirmed", 
+    null=False, 
+    blank=False, 
+    default=date.today
+  )
   case_number = models.IntegerField(
     "Case Number", 
     primary_key=True,
     null=False,
     blank=False, 
-    default=0, #Patient.objects.all().count(),
-    help_text="The case number of the Patient"
+    # default=0, #Patient.objects.all().count(),
+    # help_text="The case number of the Patient"
   )
 
   def __str__(self):
@@ -59,7 +78,7 @@ class Location(models.Model):
   x_coord = models.FloatField("X Coord", help_text="X Coordiates/Longitude of the location", default=0)
   y_coord = models.FloatField("Y Coord", help_text="Y Coordiates/Latitude of the location", default=0)
   def __str__(self):
-    return self.Location_Visited
+    return self.location_name
 
 class Visit(models.Model):
   patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
